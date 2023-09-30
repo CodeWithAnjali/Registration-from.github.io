@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .bg-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0099cc, blue,rgb(11, 90, 61),rgb(174, 38, 38),rgb(242, 88, 88),rgb(96, 29, 15),white,green,
+            grey,hotpink,skyblue,rgb(238, 2, 243),silver,gold);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .form-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 600px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            color: red;
+        }
+
+        .submit-button {
+            background-color: #1800cc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+           ;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bg-animation"></div>
+    </div>
+    <div class="form-container">
+        <h2 align ="center">Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <span class="error-message" id="usernameError"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message" id="emailError"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span class="error-message" id="passwordError"></span>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <span class="error-message" id="confirmPasswordError"></span>
+            <button  type="submit" class="submit-button">Register</button>
+            <button  type="reset" class=" submit-button">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        const registrationForm = document.getElementById("registrationForm");
+
+        registrationForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Validation code goes here
+            // You can use JavaScript to check username, email, password, and confirmPassword fields
+
+            // Example validation (just for demonstration)
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (username.trim() === "") {
+                document.getElementById("usernameError").textContent = "Username is required.";
+            } else {
+                document.getElementById("usernameError").textContent = "";
+            }
+
+            if (email.trim() === "") {
+                document.getElementById("emailError").textContent = "Email is required.";
+            } else {
+                document.getElementById("emailError").textContent = "";
+            }
+
+            if (password.trim() === "") {
+                document.getElementById("passwordError").textContent = "Password is required.";
+            } else {
+                document.getElementById("passwordError").textContent = "";
+            }
+
+            if (confirmPassword !== password) {
+                document.getElementById("confirmPasswordError").textContent = "Passwords do not match.";
+            } else {
+                document.getElementById("confirmPasswordError").textContent = "";
+            }
+
+            // If all validation passes, you can submit the form
+        });
+    </script>
+</body>
+</html>
+
